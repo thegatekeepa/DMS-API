@@ -10,7 +10,9 @@ dms.use(express.json());
 
 //display app in browser 
 dms.get("/", (req, res) => {
-  res.send("Hi. Welcome to the Only Delivery Management API You'll Ever Need.");
+  res.send(
+    "Hi. Welcome to the Only Delivery Management API You'll Ever Need."
+);
 });
 const PORT = process.env.DMS_PORT;
   dms.listen(PORT, () => {
