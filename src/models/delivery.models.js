@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const DMSDELIVERY_STATUS = require("../constants/deliveryStatus");
+const {DMSDELIVERY_STATUS, 
+  ASSIGNMENT_STATUS} = require("../constants/deliveryStatus");
 
 const deliverySchema = new mongoose.Schema(
   {
@@ -22,7 +23,7 @@ const deliverySchema = new mongoose.Schema(
       validate: {
                 validator: function (value) {
                     return /^\d{11}$/.test(value);
-                }, message: "Please enter 11 digits number to continue."
+                }, message: "Number must contain exactly 11 digits."
             },
     },
 
@@ -41,22 +42,33 @@ const deliverySchema = new mongoose.Schema(
       required: true,
     },
 
-    deliveryStatus: {
-      type: String,
-      enum: Object.values(DMSDELIVERY_STATUS),
-      default: DMSDELIVERY_STATUS.pending
-    },
-
     dispatcher: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true,
+      required: true
     },
 
     rider: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      default: null,
+      ref: "User", 
+      default: null
+    },
+
+    assignmentStatus: {
+      type: String,
+      enum: Object.values(ASSIGNMENT_STATUS),
+      default: ASSIGNMENT_STATUS.pending
+    },
+
+    assignmentExpiresAt: {
+      type: Date, 
+      default: null
+    },
+
+    status: {
+      type: String,
+      enum: Object.values(DMSDELIVERY_STATUS),
+      default: DMSDELIVERY_STATUS.pending
     },
   },
   {

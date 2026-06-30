@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const DMSROLES = require("../constants");
+const DMSROLES = require("../constants/roles");
+const Bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema (
     {
@@ -51,10 +52,9 @@ const userSchema = new mongoose.Schema (
             required: true
         }, 
 
-        dispatcher: {
-            type: mongoose.Schema.Types.ObjectId, 
-            ref: "User",
-            default: null
+        isAvailable: {
+            type: Boolean,
+            default: true
         },
 
         isActive: {
@@ -67,5 +67,20 @@ const userSchema = new mongoose.Schema (
 }
 );
 
-const user = mongoose.model("Users", userSchema);
-module.exports = user;
+//hash password before saving
+customerSchema.pre(
+  "save", async function () {
+  if (!this.isModified('password')) return; // Only hash if password is new/changed
+
+  const salt = await Bcrypt.genSalt(10); // Generate salt
+  this.password = await Bcrypt.hash(this.password, salt); // Hash password
+  }
+);
+
+//compare entered password with stored hash
+customerSchema.methods.comparePassword = async function (inputPassword) {
+  return Bcrypt.compare(inputPassword, this.password);
+};
+
+const User = mongoose.model("Users", userSchema);
+module.exports = User;

@@ -1,11 +1,22 @@
 const DMSDELIVERY_STATUS = {
   pending: "pending",
-  ASSIGNED: "assigned",
-  PICKED_UP: "picked_up",
-  IN_TRANSIT: "in_transit",
-  DELIVERED: "delivered",
-  FAILED: "failed",
-  CANCELLED: "cancelled",
+  accepted: "accepted",
+  rejected: "auto_rejected",
+  assigned: "assigned",
+  picked_up: "picked_up",
+  in_transit: "in_transit",
+  delivered: "delivered",
+  failed: "failed",
+  cancelled: "cancelled",
 };
 
-module.exports = DMSDELIVERY_STATUS;
+const ASSIGNMENT_STATUS = {
+  pending: "assignment_pending",
+  accepted: "assignment_accepted",
+  rejected: "auto_rejected"
+};
+
+module.exports = {
+  DMSDELIVERY_STATUS, 
+  ASSIGNMENT_STATUS
+};
