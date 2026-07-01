@@ -3,10 +3,11 @@ const User = require("../models/user.models");
 
 //get all riders
 const getAllRiders = async () => {
-    return await User.find({
+    const allRiders = await User.find({
         role: "rider",
         isActive: true,
     });
+    return allRiders;
 };
 
 //get rider by id
@@ -82,3 +83,11 @@ const deactivateUser = async (userId) => {
     return deletedUser;
 };
 
+module.exports = {
+    getAllRiders, 
+    getRiderById, 
+    getAllDispatchers, 
+    getDispatcherById, 
+    updateProfile, 
+    deactivateUser
+};

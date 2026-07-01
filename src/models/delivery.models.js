@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const User = require("../models/user.models");
 const {DMSDELIVERY_STATUS, 
   ASSIGNMENT_STATUS} = require("../constants/deliveryStatus");
 
@@ -65,7 +66,7 @@ const deliverySchema = new mongoose.Schema(
       default: null
     },
 
-    status: {
+    deliveryStatus: {
       type: String,
       enum: Object.values(DMSDELIVERY_STATUS),
       default: DMSDELIVERY_STATUS.pending

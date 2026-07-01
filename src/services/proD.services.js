@@ -1,7 +1,7 @@
 //proof of Delivery Services
 const ProofOfDelivery = require("../models/proD.models");
 const Delivery = require("../models/delivery.models");
-const uploadImage = require("../middlewares/forUpload");
+const uploadImage = require("../utils/uploadImage");
 
 // Upload Proof of Delivery 
 const uploadProof = async (deliveryId, riderId, file, notes) => {

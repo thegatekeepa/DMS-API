@@ -54,8 +54,7 @@ const register = async (userData) => {
   delete userObject.password;
 
   return {
-    user: userObject,
-    token,
+    user: userObject
   };
 };
 

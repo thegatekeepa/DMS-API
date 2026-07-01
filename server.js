@@ -31,7 +31,7 @@ dms.use("/api/user", authRouter);
 dms.use("/api/getlistof", userRouter);
 dms.use("/api/get", userRouter);
 dms.use("/api/profile/update", userRouter);
-dms.use("/api/profile/deactivate", userRouter);
+dms.use("/api/profile", userRouter);
 
 dms.use("/api/delivery", deliRouter);
 dms.use("/api/update", deliRouter);

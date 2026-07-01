@@ -50,7 +50,7 @@ const assignRider = async (deliveryId, riderId) => {
     await logHistory(
         upcomingDelivery._id, 
         upcomingDelivery.deliveryStatus, 
-        upcomingDelivery.dispatcher
+        riderId
     );
 
     return upcomingDelivery;
@@ -87,7 +87,7 @@ const acceptAssignment = async (deliveryId, riderId) => {
     await logHistory(
         acceptedDelivery._id, 
         acceptedDelivery.deliveryStatus, 
-        acceptedDelivery.dispatcher
+        riderId
     );
 
     return acceptedDelivery;
@@ -110,7 +110,7 @@ const updateDeliveryStatus = async (
     await logHistory(
         updatedDelivery._id, 
         updatedDelivery.deliveryStatus, 
-        updatedDelivery.dispatcher
+        riderId
     );
 
     return updatedDelivery;
