@@ -36,5 +36,5 @@ const proDSchema = new mongoose.Schema(
   }
 );
 
-const proD = mongoose.modell("ProofofDelivery", proDSchema);
+const proD = mongoose.model("ProofofDelivery", proDSchema);
 module.exports = proD;

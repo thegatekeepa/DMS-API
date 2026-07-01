@@ -8,10 +8,6 @@ const dHistorySchema = new mongoose.Schema(
       required: true,
     },
 
-    previousStatus: {
-        type: String
-    },
-
     newStatus: {
       type: String,
       required: true,

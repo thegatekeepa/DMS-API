@@ -1,3 +1,4 @@
+//for creating auth token during registration
 const jwt = require("jsonwebtoken");
 const User = require("../models/user.models"); 
 
